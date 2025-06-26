@@ -1,0 +1,301 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7h8i9j0k1l2m"]
+
+[ext_resource type="Script" path="res://scripts/OverclockingLab.gd" id="1"]
+
+[node name="OverclockingLab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="MainContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 10
+split_offset = 300
+
+[node name="LeftPanel" type="Panel" parent="MainContainer"]
+layout_mode = 2
+modulate = Color(1, 1, 1, 0.9)
+
+[node name="LeftMargin" type="MarginContainer" parent="MainContainer/LeftPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="StatusDisplay" type="VBoxContainer" parent="MainContainer/LeftPanel/LeftMargin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "System Status"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+
+[node name="RAMInfo" type="RichTextLabel" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b]RAM:[/b] Loading...
+[b]Frequency:[/b] ---- MHz
+[b]Timings:[/b] --/--/--/--
+[b]Voltage:[/b] -.---V"
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+
+[node name="TempInfo" type="RichTextLabel" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Temperature:[/b] --.-°C
+[b]Stability:[/b] ---%
+[b]Errors:[/b] 0"
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+
+[node name="IMCInfo" type="RichTextLabel" parent="MainContainer/LeftPanel/LeftMargin/StatusDisplay"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]IMC Quality:[/b] -/10
+[b]Command Rate:[/b] -T
+[b]VCCIO:[/b] -.---V
+[b]VCCSA:[/b] -.---V"
+
+[node name="RightPanel" type="Panel" parent="MainContainer"]
+layout_mode = 2
+modulate = Color(1, 1, 1, 0.9)
+
+[node name="RightMargin" type="MarginContainer" parent="MainContainer/RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/RightPanel/RightMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Header" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Overclocking Laboratory"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Frequency" type="VBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="FreqLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Memory Frequency Adjustment"
+
+[node name="CurrentFreq" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency"]
+layout_mode = 2
+text = "Current: ---- MHz"
+
+[node name="FreqSlider" type="HSlider" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency"]
+layout_mode = 2
+min_value = 2133.0
+max_value = 6400.0
+step = 100.0
+value = 3200.0
+
+[node name="FreqValue" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency"]
+layout_mode = 2
+text = "3200 MHz"
+horizontal_alignment = 1
+
+[node name="ApplyFreqButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency"]
+layout_mode = 2
+text = "Apply Frequency"
+
+[node name="Timings" type="VBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TimingsLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Primary Timings Adjustment"
+
+[node name="CLContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+
+[node name="CLLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/CLContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "CL (CAS Latency):"
+
+[node name="CLSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/CLContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 16.0
+
+[node name="tRCDContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+
+[node name="tRCDLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRCDContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "tRCD (RAS to CAS):"
+
+[node name="tRCDSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRCDContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 18.0
+
+[node name="tRPContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+
+[node name="tRPLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRPContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "tRP (RAS Precharge):"
+
+[node name="tRPSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRPContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 18.0
+
+[node name="tRASContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+
+[node name="tRASLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRASContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "tRAS (Row Active):"
+
+[node name="tRASSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/tRASContainer"]
+layout_mode = 2
+min_value = 20.0
+max_value = 100.0
+value = 36.0
+
+[node name="ApplyTimingsButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings"]
+layout_mode = 2
+text = "Apply Timings"
+
+[node name="Voltage" type="VBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VoltageLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Voltage Adjustment"
+
+[node name="DRAMContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage"]
+layout_mode = 2
+
+[node name="DRAMLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/DRAMContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "DRAM Voltage:"
+
+[node name="DRAMSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/DRAMContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 1.6
+step = 0.005
+value = 1.2
+
+[node name="VCCIOContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage"]
+layout_mode = 2
+
+[node name="VCCIOLabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/VCCIOContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "VCCIO Voltage:"
+
+[node name="VCCIOSpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/VCCIOContainer"]
+layout_mode = 2
+min_value = 0.9
+max_value = 1.4
+step = 0.005
+value = 1.1
+
+[node name="VCCSAContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage"]
+layout_mode = 2
+
+[node name="VCCSALabel" type="Label" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/VCCSAContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "VCCSA Voltage:"
+
+[node name="VCCSASpinBox" type="SpinBox" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/VCCSAContainer"]
+layout_mode = 2
+min_value = 0.9
+max_value = 1.4
+step = 0.005
+value = 1.25
+
+[node name="ApplyVoltageButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage"]
+layout_mode = 2
+text = "Apply Voltages"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MainContainer/RightPanel/RightMargin/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="StressTestButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Run Stress Test"
+
+[node name="ApplyXMPButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Apply XMP Profile"
+
+[node name="ResetButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Reset to JEDEC"
+
+[node name="BackButton" type="Button" parent="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+
+[connection signal="value_changed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency/FreqSlider" to="." method="_on_freq_slider_value_changed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Frequency/ApplyFreqButton" to="." method="_on_apply_freq_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Timings/ApplyTimingsButton" to="." method="_on_apply_timings_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/TabContainer/Voltage/ApplyVoltageButton" to="." method="_on_apply_voltage_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer/StressTestButton" to="." method="_on_stress_test_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer/ApplyXMPButton" to="." method="_on_apply_xmp_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MainContainer/RightPanel/RightMargin/VBoxContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

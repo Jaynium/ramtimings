@@ -1,0 +1,25 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the properties are organized in sections here.
+
+[application]
+
+config/name="RAM Overclocking Simulator"
+config/description="Learn real memory overclocking with this detailed educational game"
+run/main_scene="res://scenes/BIOSOverclocking.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
+
+[gui]
+
+theme/custom="res://assets/themes/main_theme.tres"
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
