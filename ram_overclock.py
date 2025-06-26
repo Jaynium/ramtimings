@@ -164,26 +164,73 @@ class RAMOverclockGame:
         
     def choose_memory_kit(self):
         kits = [
+            # DDR4 Kits
             MemoryModule("Corsair Vengeance LPX 3200", MemoryType.DDR4, MemoryIC.HYNIX_CJR, 
                         2133, (15, 15, 15, 36), 3200, (16, 18, 18, 36), 1.35, 16, 35.0, 6),
             MemoryModule("G.Skill Trident Z Neo 3600", MemoryType.DDR4, MemoryIC.SAMSUNG_CDIE,
                         2133, (15, 15, 15, 36), 3600, (16, 19, 19, 39), 1.35, 16, 38.0, 7),
             MemoryModule("G.Skill Trident Z Royal 4000", MemoryType.DDR4, MemoryIC.SAMSUNG_BDIE,
                         2133, (15, 15, 15, 36), 4000, (19, 19, 19, 39), 1.4, 16, 40.0, 9),
+            MemoryModule("Crucial Ballistix 3200", MemoryType.DDR4, MemoryIC.MICRON_EDIE,
+                        2133, (15, 15, 15, 36), 3200, (16, 18, 18, 36), 1.35, 16, 36.0, 7),
+            MemoryModule("Team T-Force Xtreem 4500", MemoryType.DDR4, MemoryIC.SAMSUNG_BDIE,
+                        2133, (15, 15, 15, 36), 4500, (19, 19, 19, 39), 1.45, 16, 42.0, 10),
+            MemoryModule("Kingston Fury Beast 3600", MemoryType.DDR4, MemoryIC.HYNIX_DJR,
+                        2133, (15, 15, 15, 36), 3600, (18, 22, 22, 42), 1.35, 16, 37.0, 6),
+            MemoryModule("Patriot Viper Steel 4400", MemoryType.DDR4, MemoryIC.SAMSUNG_BDIE,
+                        2133, (15, 15, 15, 36), 4400, (19, 19, 19, 39), 1.45, 16, 41.0, 9),
+            MemoryModule("Corsair Vengeance RGB Pro 3600", MemoryType.DDR4, MemoryIC.SAMSUNG_CDIE,
+                        2133, (15, 15, 15, 36), 3600, (18, 22, 22, 42), 1.35, 16, 38.0, 7),
+            MemoryModule("ADATA XPG Spectrix D60G 3600", MemoryType.DDR4, MemoryIC.HYNIX_CJR,
+                        2133, (15, 15, 15, 36), 3600, (18, 20, 20, 40), 1.35, 16, 38.0, 6),
+            MemoryModule("Thermaltake TOUGHRAM RGB 3200", MemoryType.DDR4, MemoryIC.SAMSUNG_CDIE,
+                        2133, (15, 15, 15, 36), 3200, (16, 18, 18, 36), 1.35, 16, 36.0, 6),
+            # DDR5 Kits
             MemoryModule("Corsair Dominator Platinum 5200", MemoryType.DDR5, MemoryIC.MICRON_BDIE,
                         4800, (40, 40, 40, 76), 5200, (40, 40, 40, 76), 1.25, 32, 42.0, 8),
+            MemoryModule("G.Skill Trident Z5 RGB 6000", MemoryType.DDR5, MemoryIC.SAMSUNG_EDIE,
+                        4800, (40, 40, 40, 76), 6000, (30, 38, 38, 96), 1.35, 32, 45.0, 9),
+            MemoryModule("Kingston Fury Beast 5600", MemoryType.DDR5, MemoryIC.MICRON_BDIE,
+                        4800, (40, 40, 40, 76), 5600, (36, 36, 36, 76), 1.25, 32, 43.0, 7),
+            MemoryModule("Corsair Vengeance DDR5 5600", MemoryType.DDR5, MemoryIC.HYNIX_MFR,
+                        4800, (40, 40, 40, 76), 5600, (36, 36, 36, 76), 1.25, 32, 43.0, 7),
+            MemoryModule("TeamGroup T-Force Delta RGB 6200", MemoryType.DDR5, MemoryIC.SAMSUNG_EDIE,
+                        4800, (40, 40, 40, 76), 6200, (36, 36, 36, 76), 1.35, 32, 46.0, 8),
+            MemoryModule("ADATA XPG Lancer RGB 6000", MemoryType.DDR5, MemoryIC.MICRON_BDIE,
+                        4800, (40, 40, 40, 76), 6000, (32, 38, 38, 96), 1.35, 32, 45.0, 8),
+            MemoryModule("Crucial DDR5 5200", MemoryType.DDR5, MemoryIC.MICRON_BDIE,
+                        4800, (40, 40, 40, 76), 5200, (42, 42, 42, 84), 1.1, 32, 40.0, 6),
+            MemoryModule("Patriot Viper Venom DDR5 6200", MemoryType.DDR5, MemoryIC.SAMSUNG_EDIE,
+                        4800, (40, 40, 40, 76), 6200, (36, 36, 36, 76), 1.35, 32, 46.0, 9),
+            MemoryModule("Thermaltake TOUGHRAM RC DDR5 5600", MemoryType.DDR5, MemoryIC.HYNIX_MFR,
+                        4800, (40, 40, 40, 76), 5600, (36, 36, 36, 76), 1.25, 32, 43.0, 7),
+            MemoryModule("G.Skill Trident Z5 Royal 6400", MemoryType.DDR5, MemoryIC.SAMSUNG_EDIE,
+                        4800, (40, 40, 40, 76), 6400, (32, 39, 39, 102), 1.4, 32, 48.0, 10),
         ]
         
         print("Available memory kits:")
+        print("\nDDR4 Kits:")
+        ddr4_count = 0
         for i, kit in enumerate(kits, 1):
-            print(f"{i}. {kit.name}")
-            print(f"   Type: {kit.memory_type.value}, IC: {kit.ic_type.value}")
-            print(f"   JEDEC: {kit.jedec_speed} MHz, Rated: {kit.rated_speed} MHz")
-            print(f"   Capacity: {kit.capacity}GB x2, Quality: {kit.quality_bin}/10")
-            print()
+            if kit.memory_type == MemoryType.DDR4:
+                ddr4_count += 1
+                print(f"{i}. {kit.name}")
+                print(f"   Type: {kit.memory_type.value}, IC: {kit.ic_type.value}")
+                print(f"   JEDEC: {kit.jedec_speed} MHz, Rated: {kit.rated_speed} MHz")
+                print(f"   Capacity: {kit.capacity}GB x2, Quality: {kit.quality_bin}/10")
+                print()
+        
+        print("\nDDR5 Kits:")
+        for i, kit in enumerate(kits, 1):
+            if kit.memory_type == MemoryType.DDR5:
+                print(f"{i}. {kit.name}")
+                print(f"   Type: {kit.memory_type.value}, IC: {kit.ic_type.value}")
+                print(f"   JEDEC: {kit.jedec_speed} MHz, Rated: {kit.rated_speed} MHz")
+                print(f"   Capacity: {kit.capacity}GB x2, Quality: {kit.quality_bin}/10")
+                print()
             
-        choice = input("Select kit (1-4): ").strip()
-        kit_index = max(0, min(3, int(choice) - 1 if choice.isdigit() else 0))
+        choice = input(f"Select kit (1-{len(kits)}): ").strip()
+        kit_index = max(0, min(len(kits)-1, int(choice) - 1 if choice.isdigit() else 0))
         
         selected_kit = kits[kit_index]
         self.current_modules = [selected_kit, selected_kit]  # Dual channel
